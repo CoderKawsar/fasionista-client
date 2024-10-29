@@ -72,9 +72,8 @@ export const ShopByCategory = () => {
 
   return (
     <div className="my-24 mx-12">
-      <div className="flex gap-x-3 items-center mb-8">
-        <h3 className="uppercase font-bold ml-24">Shop by categories</h3>
-      </div>
+      <h3 className="uppercase font-bold ml-24 mb-8">Shop by categories</h3>
+
       <div className="grid grid-cols-4 gap-6">
         <div className="slider-container col-span-3">
           <Slider {...settings}>
