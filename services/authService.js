@@ -19,6 +19,17 @@ export const setToLocalStorage = (key, token) => {
   return localStorage.setItem(key, token);
 };
 
+export const setAccessToken = (token, option) => {
+  cookies().set("access_token", token, {
+    secure: true,
+    httpOnly: true,
+  });
+
+  if (option && option.redirect) {
+    redirect(option.redirect);
+  }
+};
+
 export const setToSessionStorage = (key, token) => {
   if (!key || typeof window === "undefined") {
     return "";
@@ -56,9 +67,8 @@ export const getUserInfo = () => {
   if (authToken) {
     const decodedData = decodedToken(authToken);
     return {
-      ...decodedData,
       role: decodedData?.role.toLowerCase(),
-      userId: decodedData?.user_id,
+      user_id: decodedData?.user_id,
     };
   } else {
     return "";

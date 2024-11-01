@@ -2,8 +2,8 @@ import {
   getFromLocalStorage,
   getNewAccessToken,
   setToLocalStorage,
-} from "@/services/authService";
-import setAccessToken from "@/services/setAccessToken";
+} from "../services/authService";
+import { setAccessToken } from "../services/authService";
 import axios from "axios";
 
 const api = () => {
