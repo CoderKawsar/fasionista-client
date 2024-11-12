@@ -4,7 +4,7 @@ import logoImage from "@/public/assets/images/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { IoIosSearch } from "react-icons/io";
-import { LuUser } from "react-icons/lu";
+import { LuLayoutDashboard, LuUser } from "react-icons/lu";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { usePathname, useRouter } from "next/navigation";
@@ -13,14 +13,19 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "../ui/dropdown-menu";
+} from "@/components/ui/dropdown-menu";
 import { getUserInfo, logout } from "@/services/authService";
+import { useEffect, useState } from "react";
 
-export default function NavMenu() {
+const NavMenu = () => {
   const routerPath = usePathname();
   const router = useRouter();
 
-  const isUserLoggedIn = getUserInfo()?.user_id ? true : false;
+  const [userInfo, setUserInfo] = useState(null);
+
+  useEffect(() => {
+    setUserInfo(getUserInfo());
+  }, []);
 
   const logOut = () => {
     logout();
@@ -30,7 +35,7 @@ export default function NavMenu() {
   return (
     <header className="main-header flex justify-between items-center h-[80px] px-12 z-50 relative">
       <Link href="/">
-        <Image src={logoImage} alt="logo" width={150} height={120} />
+        <Image src={logoImage} priority alt="logo" width={150} height={120} />
       </Link>
       <div className="flex gap-x-6">
         <Link
@@ -57,7 +62,7 @@ export default function NavMenu() {
             <LuUser className="text-[17px]" />
           </DropdownMenuTrigger>
           <DropdownMenuContent>
-            {!isUserLoggedIn ? (
+            {!userInfo ? (
               <>
                 <DropdownMenuItem className="cursor-pointer hover:text-red-400">
                   <Link href="/login">Login</Link>
@@ -79,9 +84,22 @@ export default function NavMenu() {
           </DropdownMenuContent>
         </DropdownMenu>
 
-        <CiHeart className="text-xl cursor-pointer" />
-        <IoCartOutline className="text-[18px] cursor-pointer" />
+        {userInfo?.role === "admin" ||
+          (userInfo?.role === "super_admin" && (
+            <Link href="/admin">
+              <LuLayoutDashboard className="text-[19px]" />
+            </Link>
+          ))}
+
+        {userInfo?.role !== "admin" && userInfo?.role !== "super_admin" && (
+          <>
+            <CiHeart className="text-xl cursor-pointer" />
+            <IoCartOutline className="text-[18px] cursor-pointer" />
+          </>
+        )}
       </div>
     </header>
   );
-}
+};
+
+export default NavMenu;

@@ -4,7 +4,7 @@ import { IoCartOutline } from "react-icons/io5";
 
 export const ProductCard = ({ product }) => {
   return (
-    <div>
+    <div className="w-[320px]">
       <Image
         src={product?.main_image}
         width={320}

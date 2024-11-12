@@ -53,7 +53,7 @@ export const NewArrivals = () => {
     <div className="my-24 mx-12">
       <h2 className="uppercase font-bold mb-8">New Arrivals</h2>
 
-      <div className="flex justify-between gap-x-8  flex-wrap">
+      <div className="grid justify-between gap-x-2 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4">
         {data.map((item) => (
           <ProductCard key={item._id} product={item} />
         ))}

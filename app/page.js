@@ -1,5 +1,5 @@
 import { MegaFooter } from "@/components/common/MegaFooter";
-import { HappyClients } from "@/components/Home/HappyClients/HappyClients";
+import HappyClients from "@/components/Home/HappyClients/HappyClients";
 import HeroSection from "@/components/Home/HeroSection/HeroSection";
 import { NewArrivals } from "@/components/Home/NewArrivals/NewArrivals";
 import { OrderEfficiency } from "@/components/Home/OrderEfficiency/OrderEfficiency";

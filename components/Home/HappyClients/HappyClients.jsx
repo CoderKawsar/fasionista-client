@@ -26,7 +26,7 @@ function SampleNextArrow(props) {
   );
 }
 
-export const HappyClients = () => {
+const HappyClients = () => {
   const reviews = [
     {
       _id: 1,
@@ -142,3 +142,5 @@ export const HappyClients = () => {
     </div>
   );
 };
+
+export default HappyClients;
