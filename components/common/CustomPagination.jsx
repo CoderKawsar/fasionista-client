@@ -29,11 +29,13 @@ export const CustomPagination = ({ pageNo, limit, total, route }) => {
     <div className="flex items-center justify-between mt-16">
       <Pagination>
         <PaginationContent>
-          <PaginationItem>
-            <PaginationPrevious
-              href={`/${route}?pageNo=${currentPage - 1}&limit=${limit}`}
-            />
-          </PaginationItem>
+          {currentPage !== 1 && (
+            <PaginationItem>
+              <PaginationPrevious
+                href={`/${route}?pageNo=${currentPage - 1}&limit=${limit}`}
+              />
+            </PaginationItem>
+          )}
           {currentPage >= 3 && (
             <PaginationItem>
               <PaginationLink href={`/${route}?pageNo=${1}&limit=${limit}`}>
@@ -103,11 +105,14 @@ export const CustomPagination = ({ pageNo, limit, total, route }) => {
               </PaginationLink>
             </PaginationItem>
           )}
-          <PaginationItem>
-            <PaginationNext
-              href={`/${route}?pageNo=${currentPage + 1}&limit=${limit}`}
-            />
-          </PaginationItem>
+
+          {currentPage !== totalPages && (
+            <PaginationItem>
+              <PaginationNext
+                href={`/${route}?pageNo=${currentPage + 1}&limit=${limit}`}
+              />
+            </PaginationItem>
+          )}
         </PaginationContent>
       </Pagination>
       <Select
