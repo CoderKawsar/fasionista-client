@@ -1,7 +1,7 @@
 "use client";
 
 import api from "@/api/api";
-import { SingleImageUpload } from "@/components/common/SingleImageUpload";
+import { ImageUploadSingle } from "@/components/common/ImageUploadSingle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -105,7 +105,7 @@ const EditCategory = ({ params }) => {
             required
           />
         </div>
-        <SingleImageUpload
+        <ImageUploadSingle
           setImageFile={setImageFile}
           label="Category Image"
           placeholder="Upload Category Image"

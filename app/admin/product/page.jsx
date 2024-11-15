@@ -24,7 +24,10 @@ import InputSearch from "@/components/common/InputSearch";
 import { useSearchParams } from "next/navigation";
 import { PaginationCustom } from "@/components/common/PaginationCustom";
 
+// The ManageProduct component wraps SearchParamsWrapper in a Suspense component
 const ManageProduct = () => {
+  const { apiErrorHandel } = useError();
+
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <SearchParamsWrapper />
@@ -32,6 +35,7 @@ const ManageProduct = () => {
   );
 };
 
+// The SearchParamsWrapper component contains the logic for fetching products
 const SearchParamsWrapper = () => {
   const searchTerm = useSearchParams();
   const pageNo = Number(searchTerm?.get("pageNo") ?? 1);
@@ -104,7 +108,6 @@ const SearchParamsWrapper = () => {
       {!loading && products && products?.length === 0 && (
         <NoDataFound message="No products found" />
       )}
-
       {!loading && products && products?.length > 0 && (
         <div>
           <Table>

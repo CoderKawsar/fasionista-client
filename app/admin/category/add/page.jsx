@@ -1,13 +1,12 @@
 "use client";
 
 import api from "@/api/api";
-import { SingleImageUpload } from "@/components/common/SingleImageUpload";
+import { ImageUploadSingle } from "@/components/common/ImageUploadSingle";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { serverUrl } from "@/constants";
 import useError from "@/hooks/useError";
-import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef, useState } from "react";
 import toast from "react-hot-toast";
@@ -81,7 +80,7 @@ const AddCategory = () => {
             required
           />
         </div>
-        <SingleImageUpload
+        <ImageUploadSingle
           setImageFile={setImageFile}
           label="Category Image"
           placeholder="Upload Category Image"

@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Pagination,
   PaginationContent,
@@ -18,7 +20,7 @@ import {
 } from "@/components/ui/select";
 import { useRouter } from "next/navigation";
 
-export const CustomPagination = ({ pageNo, limit, total, route }) => {
+export const PaginationCustom = ({ pageNo, limit, total, route }) => {
   const router = useRouter();
 
   const options = [5, 10, 20, 50];

@@ -13,6 +13,7 @@ import {
   IoPricetagOutline,
   IoHomeOutline,
   IoSettingsOutline,
+  IoBagHandleOutline,
 } from "react-icons/io5";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -33,6 +34,12 @@ const DashboardSidebar = () => {
       url: "/admin/category",
       icon: <IoPricetagOutline />,
       isActive: pathName.startsWith("/admin/category"),
+    },
+    {
+      title: "Product",
+      url: "/admin/product",
+      icon: <IoBagHandleOutline />,
+      isActive: pathName.startsWith("/admin/product"),
     },
     {
       title: "Settings",
